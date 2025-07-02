@@ -21,6 +21,12 @@ class CanopenSimulator(Device, metaclass=DeviceMeta):
         return time.time()
 
     def init_device(self):
+
+		# note this ds requires the following to be present on the system:
+		# modprobe vcan
+		# ip link add dev vcan0 type vcan
+		# ip link set up vcan0
+
         self.set_state(DevState.INIT)
         self.get_device_properties(self.get_device_class())
         network = canopen.Network()
